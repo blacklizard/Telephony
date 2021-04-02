@@ -26,6 +26,11 @@ class TelephonyPlugin : FlutterPlugin, ActivityAware {
 
   private lateinit var permissionsController: PermissionsController
 
+  fun registerWith(registrar:Registrar) {
+    val instance = TelephonyPlugin()
+    instance.setupPlugin(registrar.context(), registrar.messenger())
+  }
+
   override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
     val isInForeground = IncomingSmsHandler.isApplicationForeground(flutterPluginBinding.applicationContext)
     if (!this::binaryMessenger.isInitialized) {
