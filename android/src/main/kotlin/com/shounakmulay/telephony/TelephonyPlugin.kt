@@ -27,9 +27,12 @@ class TelephonyPlugin : FlutterPlugin, ActivityAware {
 
   private lateinit var permissionsController: PermissionsController
 
-  fun registerWith(registrar:Registrar) {
-    val instance = TelephonyPlugin()
-    instance.setupPlugin(registrar.context(), registrar.messenger())
+  companion object {
+    @JvmStatic
+    fun registerWith(registrar:Registrar) {
+      val instance = TelephonyPlugin()
+      instance.setupPlugin(registrar.context(), registrar.messenger())
+    }
   }
 
   override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
